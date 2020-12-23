@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongo = require('connect');
+var mongo = require('../connect');
 var url = require('url');
 
 router.get('/', function(req, res, next) {

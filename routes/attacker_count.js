@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongo = require('connect');
+var mongo = require('../connect');
 
 router.get('/', function(req, res, next) {
     var result = mongo.createConnection().db("got_Data").collection("gotData").count();
