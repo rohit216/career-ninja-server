@@ -3,9 +3,13 @@ var router = express.Router();
 var mongo = require('../connect');
 
 router.get('/', function(req, res, next) {
-    var result = mongo.createConnection().db("got_Data").collection("gotData").count();
-    var object ={count : result};
-    res.end(JSON.stringify(object));
+   mongo.createConnection(async function (err, client) {
+       if(err) throw err;
+       const db = mongo.getDb();
+       const result = await db.collection("gotData").countDocuments();
+           const object = {noOfBattles : result};
+           res.end(JSON.stringify(object));
+   });
 });
 
 module.exports = router;
